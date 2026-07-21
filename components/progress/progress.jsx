@@ -2,72 +2,45 @@ import { useState, useEffect } from "react"
 import "./progress.css"
 import Graph from "./Graph"
 
-function Progress({
-  tasks = [],
-  working,
-  startTime,
-  totalWorkingTime,
-}) {
+function Progress({ tasks = [], working, startTime, totalWorkingTime }) {
   const [elapsed, setElapsed] = useState(totalWorkingTime || 0)
 
   useEffect(() => {
-  if (!working || !startTime) {
-    setElapsed(totalWorkingTime || 0)
-    return
-  }
+    if (!working || !startTime) {
+      setElapsed(totalWorkingTime || 0)
+      return
+    }
 
-  const interval = setInterval(() => {
-    setElapsed((totalWorkingTime || 0) + (Date.now() - startTime))
-  }, 1000)
+    const interval = setInterval(() => {
+      setElapsed((totalWorkingTime || 0) + (Date.now() - startTime))
+    }, 1000)
 
-  return () => clearInterval(interval)
-}, [working, startTime, totalWorkingTime])
+    return () => clearInterval(interval)
+  }, [working, startTime, totalWorkingTime])
 
   const total = tasks.length
 
-  const inbox = tasks.filter(
-    (task) => task.status === "new"
-  ).length
+  const inbox = tasks.filter((task) => task.status === "new").length
 
-  const todo = tasks.filter(
-    (task) => task.status === "todo"
-  ).length
+  const todo = tasks.filter((task) => task.status === "todo").length
 
-  const progress = tasks.filter(
-    (task) => task.status === "in-progress"
-  ).length
+  const progress = tasks.filter((task) => task.status === "in-progress").length
 
-  const completed = tasks.filter(
-    (task) => task.status === "completed"
-  ).length
+  const completed = tasks.filter((task) => task.status === "completed").length
 
-  const percentage =
-    total === 0
-      ? 0
-      : Math.round((completed / total) * 100)
+  const percentage = total === 0 ? 0 : Math.round((completed / total) * 100)
 
   // Convert milliseconds to HH:MM:SS
-  const hours = String(
-    Math.floor(elapsed / 3600000)
-  ).padStart(2, "0")
+  const hours = String(Math.floor(elapsed / 3600000)).padStart(2, "0")
 
-  const minutes = String(
-    Math.floor((elapsed % 3600000) / 60000)
-  ).padStart(2, "0")
+  const minutes = String(Math.floor((elapsed % 3600000) / 60000)).padStart(2, "0")
 
-  const seconds = String(
-    Math.floor((elapsed % 60000) / 1000)
-  ).padStart(2, "0")
+  const seconds = String(Math.floor((elapsed % 60000) / 1000)).padStart(2, "0")
 
   return (
     <div className="progress">
-
       <div className="rows">
-
-        
-
         <div className="progress-container">
-
           <div
             className="circle"
             style={{
@@ -86,7 +59,6 @@ function Progress({
           {/* Statistics */}
 
           <div className="stats">
-
             <div className="card inbox">
               <h3>{inbox}</h3>
               <p>Inbox</p>
@@ -106,43 +78,27 @@ function Progress({
               <h3>{completed}</h3>
               <p>Completed</p>
             </div>
-
-            
-
           </div>
-
         </div>
 
-        
-
         <div className="time">
-
           <h2>Working Time</h2>
 
           <h1>
             {hours}:{minutes}:{seconds}
           </h1>
 
-          <p>
-            {working
-              ? "  Working"
-              : " Offline"}
-          </p>
-
+          <p>{working ? "  Working" : " Offline"}</p>
         </div>
-
       </div>
 
       {/* Graph */}
 
       <div className="graph-container">
-
         <h2>Task Analytics</h2>
 
         <Graph tasks={tasks} />
-
       </div>
-
     </div>
   )
 }

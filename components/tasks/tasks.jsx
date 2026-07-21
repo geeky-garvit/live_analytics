@@ -30,10 +30,7 @@ function Tasks({ tasks, dispatch }) {
 
           <div className="column-items">
             {todoTasks.map((task) => (
-              <div
-                key={task.id}
-                className={`task-card ${task.priority.toLowerCase()}`}
-              >
+              <div key={task.id} className={`task-card ${task.priority.toLowerCase()}`}>
                 <h3>{task.title}</h3>
 
                 <p>{task.priority}</p>
@@ -51,10 +48,7 @@ function Tasks({ tasks, dispatch }) {
 
           <div className="column-items">
             {progressTasks.map((task) => (
-              <div
-                key={task.id}
-                className={`task-card ${task.priority.toLowerCase()}`}
-              >
+              <div key={task.id} className={`task-card ${task.priority.toLowerCase()}`}>
                 <h3>{task.title}</h3>
 
                 <p>{task.priority}</p>
@@ -72,10 +66,7 @@ function Tasks({ tasks, dispatch }) {
 
           <div className="column-items">
             {completedTasks.map((task) => (
-              <div
-                key={task.id}
-                className={`task-card ${task.priority.toLowerCase()}`}
-              >
+              <div key={task.id} className={`task-card ${task.priority.toLowerCase()}`}>
                 <h3>{task.title}</h3>
 
                 <p>{task.priority}</p>
@@ -97,11 +88,7 @@ function Tasks({ tasks, dispatch }) {
             <div
               key={task.id}
               className={`task-card ${task.priority.toLowerCase()}`}
-              onClick={() =>
-                setSelectedTask(
-                  selectedTask === task.id ? null : task.id,
-                )
-              }
+              onClick={() => setSelectedTask(selectedTask === task.id ? null : task.id)}
             >
               <h3>{task.title}</h3>
 
@@ -110,33 +97,12 @@ function Tasks({ tasks, dispatch }) {
               <p>{task.dueDate || "No Due Date"}</p>
 
               {selectedTask === task.id && (
-                <div
-                  className="status-menu"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    onClick={() =>
-                      moveTask(task.id, "todo")
-                    }
-                  >
-                    Todo
-                  </button>
+                <div className="status-menu" onClick={(e) => e.stopPropagation()}>
+                  <button onClick={() => moveTask(task.id, "todo")}>Todo</button>
 
-                  <button
-                    onClick={() =>
-                      moveTask(task.id, "in-progress")
-                    }
-                  >
-                    In Progress
-                  </button>
+                  <button onClick={() => moveTask(task.id, "in-progress")}>In Progress</button>
 
-                  <button
-                    onClick={() =>
-                      moveTask(task.id, "completed")
-                    }
-                  >
-                    Completed
-                  </button>
+                  <button onClick={() => moveTask(task.id, "completed")}>Completed</button>
                 </div>
               )}
             </div>

@@ -1,5 +1,3 @@
-
-
 function getRandomPriority() {
   const priority = ["Low", "Medium", "High"]
 

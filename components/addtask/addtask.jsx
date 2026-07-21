@@ -1,8 +1,8 @@
 import "./addtask.css"
 import { useState } from "react"
-import {taskSchema} from "../../src/schema/taskSchema"
+import { taskSchema } from "../../src/schema/taskSchema"
 
-function Addtask({dispatch ,setshow}) {
+function Addtask({ dispatch, setshow }) {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [priority, setPriority] = useState("Medium")
@@ -10,7 +10,7 @@ function Addtask({dispatch ,setshow}) {
 
   const [errors, setErrors] = useState({})
 
- function submit(e) {
+  function submit(e) {
     e.preventDefault()
 
     const result = taskSchema.safeParse({
@@ -42,24 +42,24 @@ function Addtask({dispatch ,setshow}) {
 
     console.log(newTask)
     dispatch({
-  type: "ADD_TASK",
-  payload: newTask,
-})
-setshow(false)
+      type: "ADD_TASK",
+      payload: newTask,
+    })
+    setshow(false)
     setTitle("")
     setDescription("")
     setPriority("Medium")
     setDate("")
-    
   }
-
 
   return (
     <form onSubmit={submit}>
       <div className="form">
         <div className="header">
           <center>ADD NEW TASKS</center>
-          <button className="close" onClick={()=>setshow(false)}>+</button>
+          <button className="close" onClick={() => setshow(false)}>
+            +
+          </button>
         </div>
 
         <div className="form-inputs">
@@ -102,9 +102,7 @@ setshow(false)
             />
           </div>
 
-          <button className="submit" >
-            Submit
-          </button>
+          <button className="submit">Submit</button>
         </div>
       </div>
     </form>
