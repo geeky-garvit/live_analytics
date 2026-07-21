@@ -1,0 +1,157 @@
+.progress{
+    width:90vw;
+    margin:120px auto 40px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.rows{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:25px;
+}
+
+/* Progress Card */
+
+.progress-container{
+    flex:2;
+    min-height:300px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+
+    padding:20px;
+}
+
+/* Working Time */
+
+.time{
+    flex:1;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.time h2{
+    color:#777;
+    margin-bottom:20px;
+}
+
+.time h1{
+    font-size:45px;
+    letter-spacing:3px;
+    margin:10px 0;
+}
+
+.time p{
+    font-size:18px;
+    color:#666;
+}
+
+/* Progress Circle */
+
+.circle{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.circle-inner{
+    width:170px;
+    height:170px;
+    background:#fff;
+    border-radius:50%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.circle-inner h1{
+    margin:0;
+    font-size:40px;
+}
+
+.circle-inner p{
+    margin-top:10px;
+    color:#777;
+}
+
+/* Stats */
+
+.stats{
+    flex:1;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.card{
+    border-radius:15px;
+    color:#fff;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    min-height:90px;
+}
+
+.card h3{
+    margin:0;
+    font-size:32px;
+}
+
+.card p{
+    margin-top:10px;
+}
+
+/* Colors */
+
+.inbox{
+    background:#64748b;
+}
+
+.todo{
+    background:#f59e0b;
+}
+
+.progress-card{
+    background:#3b82f6;
+}
+
+.completed{
+    background:#22c55e;
+}
+
+.total{
+    background:#8b5cf6;
+}
+
+/* Graph */
+
+.graph-container{
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    padding:20px;
+}
