@@ -1,52 +1,29 @@
-import Navbar from "../components/navbar/navbar"
 import "./App.css"
-import Addtask from "../components/addtask/addtask"
-import Progress from "../components/progress/progress"
-import tasks from "../storage/data"
-import Tasks from "../components/tasks/tasks"
-import { useEffect, useReducer, useState } from "react"
-import { Reducer, initialState } from "./reducer/reducer"
-import { getTasks } from "../services/api"
-import { transformTasks } from "./utills/transformer"
+import { useContext } from "react"
+import { Routes, Route } from "react-router-dom"
+
+import Navbar from "../components/navbar/navbar"
+import AddTask from "../components/addtask/Addtask"
+import { TaskContext } from "./context/taskcontext"
+
+import Home from "./pages/home"
+import TasksPage from "./pages/taskpage"
+import ProgressPage from "./pages/progress"
 
 function App() {
-  const [state, dispatch] = useReducer(Reducer, initialState)
-  const [show, setshow] = useState(false)
-  useEffect(() => {
-    async function loadTasks() {
-      try {
-        const data = await getTasks()
-
-        console.log("API Response:", data)
-        console.log("Is Array?", Array.isArray(data))
-
-        const transformed = transformTasks(data)
-
-        dispatch({
-          type: "LOAD_TASKS",
-          payload: transformed,
-        })
-      } catch (err) {
-        console.error(err)
-      }
-    }
-
-    loadTasks()
-  }, [])
-
-  const [data, loading, error] = useGetData()
+  const { state } = useContext(TaskContext)
 
   return (
     <>
-      <Navbar setshow={setshow} working={state.working} dispatch={dispatch} />
-      {show && <Addtask setshow={setshow} dispatch={dispatch} />}
-      <Tasks tasks={state.tasks} dispatch={dispatch} />
-      <Progress
-        tasks={state.tasks}
-        working={state.working}
-        startTime={state.startTime}
-        totalWorkingTime={state.totalWorkingTime}
-      />
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/progress" element={<ProgressPage />} />
+      </Routes>
+
+      {state.showAddModal && <AddTask />}
     </>
   )
 }

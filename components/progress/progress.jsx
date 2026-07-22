@@ -1,40 +1,27 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
 import "./progress.css"
 import Graph from "./Graph"
+import { TaskContext } from "../../src/context/taskcontext"
+import useWorkingTimer from "../../src/hooks/workingtime"
 
-function Progress({ tasks = [], working, startTime, totalWorkingTime }) {
-  const [elapsed, setElapsed] = useState(totalWorkingTime || 0)
+function Progress() {
+  const { state } = useContext(TaskContext)
+  const { tasks, working, startTime, totalWorkingTime } = state
 
-  useEffect(() => {
-    if (!working || !startTime) {
-      setElapsed(totalWorkingTime || 0)
-      return
-    }
-
-    const interval = setInterval(() => {
-      setElapsed((totalWorkingTime || 0) + (Date.now() - startTime))
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [working, startTime, totalWorkingTime])
+  const elapsed = useWorkingTimer(working, startTime, totalWorkingTime)
 
   const total = tasks.length
-
-  const inbox = tasks.filter((task) => task.status === "new").length
-
-  const todo = tasks.filter((task) => task.status === "todo").length
-
-  const progress = tasks.filter((task) => task.status === "in-progress").length
-
-  const completed = tasks.filter((task) => task.status === "completed").length
+  const inbox = tasks.filter((t) => t.status === "new").length
+  const todo = tasks.filter((t) => t.status === "todo").length
+  const progress = tasks.filter((t) => t.status === "in-progress").length
+  const completed = tasks.filter((t) => t.status === "completed").length
 
   const percentage = total === 0 ? 0 : Math.round((completed / total) * 100)
+  const productivity =
+    total === 0 ? 0 : Math.round(((completed + progress * 0.5) / total) * 100)
 
-  // Convert milliseconds to HH:MM:SS
   const hours = String(Math.floor(elapsed / 3600000)).padStart(2, "0")
-
   const minutes = String(Math.floor((elapsed % 3600000) / 60000)).padStart(2, "0")
-
   const seconds = String(Math.floor((elapsed % 60000) / 1000)).padStart(2, "0")
 
   return (
@@ -44,10 +31,7 @@ function Progress({ tasks = [], working, startTime, totalWorkingTime }) {
           <div
             className="circle"
             style={{
-              background: `conic-gradient(
-                #22c55e ${percentage * 3.6}deg,
-                #e5e7eb 0deg
-              )`,
+              background: `conic-gradient(#22c55e ${percentage * 3.6}deg, #e5e7eb 0deg)`,
             }}
           >
             <div className="circle-inner">
@@ -55,8 +39,6 @@ function Progress({ tasks = [], working, startTime, totalWorkingTime }) {
               <p>Completed</p>
             </div>
           </div>
-
-          {/* Statistics */}
 
           <div className="stats">
             <div className="card inbox">
@@ -71,32 +53,31 @@ function Progress({ tasks = [], working, startTime, totalWorkingTime }) {
 
             <div className="card progress-card">
               <h3>{progress}</h3>
-              <p>In Progress</p>
+              <p>Working</p>
             </div>
 
             <div className="card completed">
               <h3>{completed}</h3>
               <p>Completed</p>
             </div>
+
+            <div className="card productivity">
+              <h3>{productivity}%</h3>
+              <p>Productivity</p>
+            </div>
           </div>
         </div>
 
         <div className="time">
           <h2>Working Time</h2>
-
           <h1>
             {hours}:{minutes}:{seconds}
           </h1>
-
-          <p>{working ? "  Working" : " Offline"}</p>
+          <p>{working ? "🟢 Working" : "🔴 Offline"}</p>
         </div>
       </div>
 
-      {/* Graph */}
-
       <div className="graph-container">
-        <h2>Task Analytics</h2>
-
         <Graph tasks={tasks} />
       </div>
     </div>

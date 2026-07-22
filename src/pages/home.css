@@ -1,0 +1,323 @@
+.home {
+  width: 90vw;
+  margin: 110px auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero {
+  width: 100%;
+  min-height: 18vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2rem 3rem;
+
+  background: #fff;
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+}
+
+.hero p {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.newTask {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.graphSection {
+  width: 100%;
+  height: 55vh;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.graphHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.graphHeader h2 {
+  font-size: 1.8rem;
+}
+
+.graphHeader p {
+  color: #666;
+}
+
+.homeGraph {
+  flex: 1;
+
+  width: 100%;
+
+  min-height: 0;
+}
+
+.middle {
+  display: flex;
+
+  gap: 2rem;
+
+  width: 100%;
+}
+
+.circleCard,
+.timerCard {
+  flex: 1;
+
+  background: white;
+
+  border-radius: 20px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  padding: 2rem;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.recent {
+  width: 100%;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 2rem;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.actions button {
+  padding: 1rem 2rem;
+
+  border: none;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+.middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.circleCard,
+.timerCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.circle {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circleInner {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.circleInner h1 {
+  font-size: 48px;
+}
+
+.circleInner p {
+  color: #777;
+}
+
+.timerCard h2 {
+  color: #777;
+}
+
+.timerCard h1 {
+  font-size: 50px;
+  margin: 20px 0;
+}
+
+.timerCard p {
+  font-size: 20px;
+}
+
+.recent {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+}
+
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.recentHeader h2 {
+  color: #222;
+}
+
+.recentHeader a {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.recentTask {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.recentTask:last-child {
+  border: none;
+}
+
+.recentTask h3 {
+  margin-bottom: 5px;
+}
+
+.recentTask p {
+  color: #888;
+}
+
+.recentTask span {
+  background: #eef2ff;
+  color: #2563eb;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+/* ACTION BUTTONS */
+
+.actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.actions button {
+  width: 240px;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.actions button:hover {
+  background: #2563eb;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .dashboardCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .middle {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboardCards {
+    grid-template-columns: 1fr;
+  }
+
+  .circle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .circleInner {
+    width: 150px;
+    height: 150px;
+  }
+
+  .timerCard h1 {
+    font-size: 35px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}

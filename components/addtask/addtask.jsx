@@ -1,13 +1,16 @@
 import "./addtask.css"
-import { useState } from "react"
-import { taskSchema } from "../../src/schema/taskSchema"
+import { useState, useContext } from "react"
 
-function Addtask({ dispatch, setshow }) {
+import { taskSchema } from "../../schema/taskSchema"
+import { TaskContext } from "../../context/taskcontext"
+
+function Addtask() {
+  const { dispatch } = useContext(TaskContext)
+
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [priority, setPriority] = useState("Medium")
   const [date, setDate] = useState("")
-
   const [errors, setErrors] = useState({})
 
   function submit(e) {
@@ -21,14 +24,18 @@ function Addtask({ dispatch, setshow }) {
     })
 
     if (!result.success) {
+      console.log("Validation Failed:", result.error)
       const fieldErrors = {}
 
-      result.error.errors.forEach((err) => {
-        fieldErrors[err.path[0]] = err.message
+      // Zod issues array traversal
+      const issues = result.error.issues || result.error.errors || []
+      issues.forEach((err) => {
+        if (err.path.length > 0) {
+          fieldErrors[err.path[0]] = err.message
+        }
       })
 
       setErrors(fieldErrors)
-
       return
     }
 
@@ -40,12 +47,18 @@ function Addtask({ dispatch, setshow }) {
       status: "todo",
     }
 
-    console.log(newTask)
+   
     dispatch({
       type: "ADD_TASK",
       payload: newTask,
     })
-    setshow(false)
+
+    
+    dispatch({
+      type: "CLOSE_ADD_MODAL",
+    })
+
+   
     setTitle("")
     setDescription("")
     setPriority("Medium")
@@ -53,59 +66,75 @@ function Addtask({ dispatch, setshow }) {
   }
 
   return (
-    <form onSubmit={submit}>
-      <div className="form">
-        <div className="header">
-          <center>ADD NEW TASKS</center>
-          <button className="close" onClick={() => setshow(false)}>
-            +
-          </button>
+    <div
+      className="modalOverlay"
+      onClick={() => dispatch({ type: "CLOSE_ADD_MODAL" })}
+    >
+      <form onSubmit={submit} onClick={(e) => e.stopPropagation()}>
+        <div className="form">
+          <div className="header">
+            <center>ADD NEW TASK</center>
+            <button
+              type="button"
+              className="close"
+              onClick={() => dispatch({ type: "CLOSE_ADD_MODAL" })}
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="form-inputs">
+            <div className="input-items">
+              <h3>Task</h3>
+              <input
+                type="text"
+                value={title}
+                placeholder="Enter task title..."
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              {errors.title && <small style={{ color: "red" }}>{errors.title}</small>}
+            </div>
+
+            <div className="input-items">
+              <h3>Priority</h3>
+              <select
+                value={priority}
+                onChange={(e) => setPriority(e.target.value)}
+              >
+                <option value="Low">🟢 Low</option>
+                <option value="Medium">🟡 Medium</option>
+                <option value="High">🔴 High</option>
+              </select>
+              {errors.priority && <small style={{ color: "red" }}>{errors.priority}</small>}
+            </div>
+
+            <div className="input-items">
+              <h3>Due Date</h3>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+              {errors.date && <small style={{ color: "red" }}>{errors.date}</small>}
+            </div>
+
+            <div className="input-items">
+              <h3>Description</h3>
+              <textarea
+                value={description}
+                placeholder="Task description..."
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {errors.description && <small style={{ color: "red" }}>{errors.description}</small>}
+            </div>
+
+            <button className="submit" type="submit">
+              Add Task
+            </button>
+          </div>
         </div>
-
-        <div className="form-inputs">
-          <div className="input-items">
-            <h3>Task</h3>
-
-            <input
-              type="text"
-              className="task-input"
-              placeholder="Enter task..."
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-
-          <div className="input-items">
-            <h3>Priority</h3>
-
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-              <option value="Low">🟢 Low</option>
-              <option value="Medium">🟡 Medium</option>
-              <option value="High">🔴 High</option>
-            </select>
-          </div>
-
-          <div className="input-items">
-            <h3>Validity</h3>
-
-            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-          </div>
-
-          <div className="input-items">
-            <h3>Description</h3>
-
-            <input
-              type="text"
-              placeholder="Task description..."
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-
-          <button className="submit">Submit</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }
 
