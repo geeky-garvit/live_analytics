@@ -95,22 +95,24 @@
 
 .stats {
   flex: 1;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 10px;
+  height:20vh;
+  width: 10vw;
+  
 }
 
 .card {
   border-radius: 15px;
   color: #fff;
-
+  width: 10vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   min-height: 90px;
+  justify-self: center;
 }
 
 .card h3 {

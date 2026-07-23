@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 import { TaskContext } from "../context/taskcontext"
@@ -8,9 +8,29 @@ import { PageSkeleton } from "../../components/skeleton/Skeleton"
 
 import "./home.css"
 
+// 5 Mood options
+const MOOD_OPTIONS = [
+  { emoji: "😊", label: "Happy" },
+  { emoji: "🔥", label: "On Fire" },
+  { emoji: "🎯", label: "Focused" },
+  { emoji: "☕", label: "Relaxed" },
+  { emoji: "🚀", label: "Productive" },
+]
+
 function Home() {
   const { state } = useContext(TaskContext)
   const { tasks, working, startTime, totalWorkingTime, loading } = state
+
+  // Load saved mood from localStorage or default to "😊"
+  const [selectedMood, setSelectedMood] = useState(() => {
+    return localStorage.getItem("user_mood") || "😊"
+  })
+
+  // Persist mood choice
+  const handleMoodSelect = (emoji) => {
+    setSelectedMood(emoji)
+    localStorage.setItem("user_mood", emoji)
+  }
 
   const elapsed = useWorkingTimer(working, startTime, totalWorkingTime)
 
@@ -32,9 +52,30 @@ function Home() {
   return (
     <div className="home">
       <section className="hero">
-        <div>
-          <h1>Welcome Back 👋</h1>
-          <p>Stay organized and finish your work efficiently.</p>
+        <div className="welcome-container">
+          <div className="welcome-title">
+            <h1>
+              Welcome Back <span className="active-mood">{selectedMood}</span>
+            </h1>
+            <p>Stay organized and finish your work efficiently.</p>
+          </div>
+
+          {/* MOOD PICKER OPTIONS */}
+          <div className="mood-picker">
+            <span className="mood-label">Set Mood:</span>
+            <div className="mood-options">
+              {MOOD_OPTIONS.map((item) => (
+                <button
+                  key={item.emoji}
+                  title={item.label}
+                  className={`mood-btn ${selectedMood === item.emoji ? "active" : ""}`}
+                  onClick={() => handleMoodSelect(item.emoji)}
+                >
+                  {item.emoji}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

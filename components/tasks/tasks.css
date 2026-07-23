@@ -6,7 +6,7 @@
   --subtext: #6b7280;
   --primary: #2563eb;
   --drop-hover: #f1f5f9;
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 .tasks{
   display: flex;
@@ -61,9 +61,17 @@
   color: var(--text);
   cursor: pointer;
   font-weight: 500;
+  background-color:rgb(10, 14, 122);
+  position: fixed;
+  right: 0;
+  color: white;
 }
 .all-tasks{
   box-shadow: 0 4px 12px gray;
+  width: 98VW;
+}
+.undo-btn, .theme-toggle:hover{
+  background-color:rgb(182, 27, 234);
 }
 
 .undo-btn:disabled {
@@ -71,7 +79,7 @@
   cursor: not-allowed;
 }
 
-/* Layout */
+
 .main-layout {
   display: grid;
   grid-template-columns: 1fr 260px;
@@ -88,7 +96,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  width: 90vw;
+  
+  
   
 }
 
@@ -111,7 +120,7 @@
 .inprogress h1 { border-top: 4px solid #3b82f6; }
 .completed h1 { border-top: 4px solid #22c55e; }
 
-/* Column Items / Droppable Targets */
+
 .column-items {
   min-height: 220px;
   max-height: 480px;
@@ -124,7 +133,7 @@
   background: var(--drop-hover);
 }
 
-/* Card Styling */
+
 .task-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -235,5 +244,5 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap:80vw
+  gap:60vw
 }

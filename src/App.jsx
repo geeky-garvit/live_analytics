@@ -15,6 +15,7 @@ function App() {
 
   return (
     <>
+      <h1 className="first-name">Geeky Dash</h1>
       <Navbar />
 
       <Routes>

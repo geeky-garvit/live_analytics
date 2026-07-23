@@ -1,171 +1,283 @@
-/* --- Global Box-Sizing Reset --- */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* --- Professional Dark Overlay --- */
 .modalOverlay {
+  width: 100vw;
+  height: 100vh;
+
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(15, 23, 42, 0.6); /* Slate-900 transparent */
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: rgba(118, 118, 118, 0.55);
+  backdrop-filter: blur(6px);
+
   z-index: 1000;
-  backdrop-filter: blur(4px);
 }
 
-/* --- Enterprise Modal Surface --- */
 .form {
+  position: relative;
+
+  width: 42vw;
+  min-width: 460px;
+  max-width: 620px;
+
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 480px;
-  max-width: 92vw;
-  background-color: #ffffff;
-  border-radius: 12px;
-  /* Dual box-shadow handles frame offset and realistic ambient depth */
-  box-shadow: 0 0 0 24px #ffffff, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  background: #f6edfa;
+
+  border-radius: 24px;
+
+  padding: 30px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 25px 50px rgba(15, 23, 42, 0.12),
+    0 10px 20px rgba(15, 23, 42, 0.08);
+
   z-index: 1001;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-/* --- Header & Title --- */
+.form::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -160%;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 110deg,
+    #38bdf8 180deg,
+    #818cf8 240deg,
+    #c084fc 300deg,
+    transparent 360deg
+  );
+
+  animation: rotateBorder 4s linear infinite;
+
+  z-index: -2;
+}
+
+.form::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 2px;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  z-index: -1;
+}
+
 .header {
+  width: 100%;
+
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  box-shadow: 0 1px 0 0 #e2e8f0; /* Crisp divider line */
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .header center {
-  display: flex;
   flex: 1;
+
+  display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+
+  font-size: 1.3rem;
+  font-weight: 700;
+
   color: #0f172a;
+
+  letter-spacing: -0.02em;
 }
 
-/* --- Minimalist Close Button --- */
 .close {
+  width: 38px;
+  height: 38px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 6px;
-  background-color: #f1f5f9;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+
+  background: #f8fafc;
+
   color: #64748b;
-  font-size: 0.9rem;
-  font-weight: 600;
+
+  font-size: 1rem;
+  font-weight: 700;
+
   cursor: pointer;
-  box-shadow: inset 0 0 0 1px #e2e8f0;
-  transition: all 0.15s ease-in-out;
+
+  transition: all 0.25s ease;
 }
 
 .close:hover {
-  background-color: #fef2f2;
-  color: #ef4444;
-  box-shadow: inset 0 0 0 1px #fca5a5;
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+  transform: rotate(90deg);
 }
 
-/* --- Form Body Layout --- */
 .form-inputs {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  width: 100%;
+  gap: 22px;
 }
 
-/* --- Field Row --- */
 .input-items {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
   width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .input-items h3 {
-  display: flex;
-  align-items: center;
-  width: 100px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #475569;
+  width: 110px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: #334155;
 }
 
-/* --- Inputs, Selects & Textarea --- */
 input,
 select,
 textarea {
-  display: flex;
   flex: 1;
-  height: 40px;
-  border: none;
-  border-radius: 6px;
-  background-color: #f8fafc;
-  font-size: 0.875rem;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+
+  background: #f8fafc;
+
   color: #0f172a;
+
+  font-size: 0.95rem;
+
   outline: none;
-  box-shadow: inset 0 0 0 1px #cbd5e1;
-  transition: box-shadow 0.15s ease-in-out, background-color 0.15s ease-in-out;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+input,
+select {
+  height: 48px;
+  padding: 0 16px;
 }
 
 textarea {
-  height: 84px;
+  min-height: 110px;
+  padding: 14px 16px;
   resize: vertical;
 }
 
-/* --- Professional Focus & Active States --- */
 input:focus,
 select:focus,
 textarea:focus {
-  background-color: #ffffff;
-  box-shadow: inset 0 0 0 2px #2563eb, 0 0 0 3px rgba(37, 99, 235, 0.12);
+  background: #ffffff;
+  border-color: #de60fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
 }
 
-/* --- Validation Error Messages --- */
 small {
-  display: flex;
-  align-items: center;
+  display: block;
+
   color: #dc2626;
-  font-size: 0.75rem;
-  font-weight: 500;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  margin-top: 6px;
 }
 
-/* --- Enterprise Action Button --- */
 .submit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  height: 42px;
+  height: 52px;
+
   border: none;
-  border-radius: 6px;
-  background-color: #2563eb;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #e68ef6 0%, #dcbaec 55%, #d9bcf6 100%);
+
   color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+
+  font-size: 1rem;
+  font-weight: 700;
+
   cursor: pointer;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.15s ease-in-out;
+
+  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.28);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .submit:hover {
-  background-color: #1d4ed8;
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.25), 0 2px 4px -2px rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(129, 140, 248, 0.38);
 }
 
 .submit:active {
   transform: translateY(1px);
+}
+
+@keyframes rotateBorder {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .form {
+    width: 92vw;
+    min-width: unset;
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .input-items {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .input-items h3 {
+    width: auto;
+  }
 }

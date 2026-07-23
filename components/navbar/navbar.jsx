@@ -20,7 +20,7 @@ function Navbar() {
         &
       </NavLink>
 
-      {/* CENTERED ERROR BANNER */}
+      
       {state.error && (
         <div className="navbar-error-banner">
           <span className="error-icon">⚠️</span>
@@ -53,7 +53,7 @@ function Navbar() {
         </div>
 
         <div className="work-toggle">
-          <span>{state.working ? "Working" : "Offline"}</span>
+          <span>{state.working ? "💚" : "❤️"}</span>
           <label className="switch">
             <input
               type="checkbox"

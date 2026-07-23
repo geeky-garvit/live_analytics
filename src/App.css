@@ -1,0 +1,13 @@
+.first-name {
+  position: fixed;
+  top: -40px;
+  font-size: 18vh;
+  left: 500px;
+  z-index: -5;
+  background: linear-gradient(to right, #d4bbf3, #be50f1);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
