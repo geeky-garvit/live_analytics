@@ -1,4 +1,4 @@
-import "./skeleton.css"
+import "./Skeleton.css"
 
 export function CardSkeleton() {
   return (
