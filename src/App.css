@@ -2,7 +2,7 @@
   position: fixed;
   top: -40px;
   font-size: 18vh;
-  left: 500px;
+  left: 25vw;
   z-index: -5;
   background: linear-gradient(to right, #d4bbf3, #be50f1);
 
@@ -10,4 +10,5 @@
   background-clip: text;
 
   color: transparent;
+  
 }
