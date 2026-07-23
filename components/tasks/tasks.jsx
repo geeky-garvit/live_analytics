@@ -1,33 +1,37 @@
 import "./tasks.css"
 import { useState, useContext } from "react"
 import { TaskContext } from "../../src/context/taskcontext"
+import StatsFloatingModal from "../StatsFloatingModal"
+import useTaskStats from "../../src/hooks/usetaskstate"
 
 function Tasks() {
+
   const { state, dispatch } = useContext(TaskContext)
+
+  const tasks = state?.tasks || []
+  const stats = useTaskStats(tasks)
 
   const [priorityFilter, setPriorityFilter] = useState("all")
   const [selectedTask, setSelectedTask] = useState(null)
   const [dragTask, setDragTask] = useState(null)
   const [search, setSearch] = useState("")
 
-  const tasks = state.tasks || []
-
   const inboxTasks = tasks
     .filter((task) => task.status === "new")
     .filter((task) => {
       const searchMatch = task.title.toLowerCase().includes(search.toLowerCase())
-
-      const priorityMatch = priorityFilter === "all" || task.priority.toLowerCase() === priorityFilter.toLowerCase()
+      const priorityMatch =
+        priorityFilter === "all" || task.priority.toLowerCase() === priorityFilter.toLowerCase()
 
       return searchMatch && priorityMatch
     })
-
 
   const todoTasks = tasks.filter((task) => task.status === "todo")
   const progressTasks = tasks.filter((task) => task.status === "in-progress")
   const completedTasks = tasks.filter((task) => task.status === "completed")
 
   function moveTask(id, status) {
+    if (!dispatch) return
     dispatch({
       type: "CHANGE_STATUS",
       payload: { id, status },
@@ -62,6 +66,7 @@ function Tasks() {
         onDrop={() => {
           if (dragTask) {
             moveTask(dragTask.id, status)
+            setDragTask(null) 
           }
         }}
       >
@@ -72,7 +77,6 @@ function Tasks() {
 
   return (
     <div className="tasks">
-      
       <div className="board-actions" style={{ marginBottom: "15px" }}>
         <button
           onClick={handleUndo}
@@ -84,7 +88,7 @@ function Tasks() {
             opacity: state.lastAction ? 1 : 0.5,
           }}
         >
-          ↩️ Undo Last Move
+          ↩️
         </button>
       </div>
 
@@ -110,7 +114,6 @@ function Tasks() {
           <h1>Inbox</h1>
 
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-           
             <input
               type="text"
               placeholder="Search Inbox..."
@@ -123,7 +126,6 @@ function Tasks() {
               }}
             />
 
-           
             <select className="fltr" value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}>
               <option value="all">All</option>
               <option value="high">🔴 High</option>
@@ -139,6 +141,7 @@ function Tasks() {
           onDrop={() => {
             if (dragTask) {
               moveTask(dragTask.id, "new")
+              setDragTask(null)
             }
           }}
         >
@@ -169,6 +172,7 @@ function Tasks() {
           )}
         </div>
       </div>
+      <StatsFloatingModal stats={stats} />
     </div>
   )
 }
