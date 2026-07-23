@@ -1,11 +1,13 @@
 import "./addtask.css"
 import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom" // 1. Import useNavigate
 
-import { taskSchema } from "../../schema/taskSchema"
-import { TaskContext } from "../../context/taskcontext"
+import { taskSchema } from "../../src/schema/taskSchema"
+import { TaskContext } from "../../src/context/taskcontext"
 
 function Addtask() {
   const { dispatch } = useContext(TaskContext)
+  const navigate = useNavigate() // 2. Initialize navigate hook
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -27,7 +29,6 @@ function Addtask() {
       console.log("Validation Failed:", result.error)
       const fieldErrors = {}
 
-      // Zod issues array traversal
       const issues = result.error.issues || result.error.errors || []
       issues.forEach((err) => {
         if (err.path.length > 0) {
@@ -47,18 +48,17 @@ function Addtask() {
       status: "todo",
     }
 
-   
     dispatch({
       type: "ADD_TASK",
       payload: newTask,
     })
 
-    
     dispatch({
       type: "CLOSE_ADD_MODAL",
     })
 
-   
+    navigate("/tasks") // 3. Fixed navigation error
+
     setTitle("")
     setDescription("")
     setPriority("Medium")

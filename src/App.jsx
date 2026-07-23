@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { Routes, Route } from "react-router-dom"
 
 import Navbar from "../components/navbar/navbar"
-import AddTask from "../components/addtask/Addtask"
+import AddTask from "../components/addtask/addtask"
 import { TaskContext } from "./context/taskcontext"
 
 import Home from "./pages/home"
