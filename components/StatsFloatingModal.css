@@ -1,4 +1,3 @@
-
 .floating-stats-trigger {
   position: fixed;
   bottom: 30px;
@@ -24,7 +23,6 @@
   font-size: 22px;
 }
 
-
 .stats-modal-overlay {
   position: fixed;
   top: 0;
@@ -39,7 +37,6 @@
   z-index: 1001;
 }
 
-
 .stats-modal-content {
   position: relative;
   width: 90%;
@@ -48,7 +45,7 @@
   color: #0f172a;
   padding: 30px;
   border-radius: 24px;
-  overflow: hidden; 
+  overflow: hidden;
   box-shadow:
     0 25px 50px rgba(15, 23, 42, 0.12),
     0 10px 20px rgba(15, 23, 42, 0.08);
@@ -56,7 +53,6 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   z-index: 1002;
 }
-
 
 .stats-modal-content::before {
   content: "";
@@ -78,7 +74,7 @@
 .stats-modal-content::after {
   content: "";
   position: absolute;
-  inset: 2px; 
+  inset: 2px;
   background: #ffffff;
   border-radius: 22px;
   z-index: -1;
@@ -103,7 +99,6 @@
     transform: scale(1);
   }
 }
-
 
 .modal-header {
   display: flex;
@@ -196,6 +191,15 @@
   font-weight: 600;
 }
 
-.pill.todo { background: #e0f2fe; color: #0369a1; }
-.pill.progress { background: #fef3c7; color: #b45309; }
-.pill.done { background: #dcfce7; color: #15803d; }
+.pill.todo {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.pill.progress {
+  background: #fef3c7;
+  color: #b45309;
+}
+.pill.done {
+  background: #dcfce7;
+  color: #15803d;
+}

@@ -7,7 +7,6 @@ import { getTasks } from "../../services/api"
 import { transformTasks } from "../utills/transformer"
 
 function TaskProvider({ children }) {
-  
   const getSafelyLoadedState = () => {
     try {
       const saved = loadState()
@@ -55,11 +54,7 @@ function TaskProvider({ children }) {
     }
   }, [state])
 
-  return (
-    <TaskContext.Provider value={{ state, dispatch }}>
-      {children}
-    </TaskContext.Provider>
-  )
+  return <TaskContext.Provider value={{ state, dispatch }}>{children}</TaskContext.Provider>
 }
 
 export default TaskProvider

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import "./progress.css"
-import Graph from "./Graph"
+import Graph from "./graph"
 import { TaskContext } from "../../src/context/taskcontext"
 import useWorkingTimer from "../../src/hooks/workingtime"
 

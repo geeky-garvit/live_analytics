@@ -8,7 +8,6 @@ import { PageSkeleton } from "../../components/skeleton/Skeleton"
 
 import "./home.css"
 
-
 const MOOD_OPTIONS = [
   { emoji: "😊", label: "Happy" },
   { emoji: "🔥", label: "On Fire" },

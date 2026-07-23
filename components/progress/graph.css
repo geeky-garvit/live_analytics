@@ -1,73 +1,74 @@
-.graph-container{
-    width:95%;
-    margin:30px auto;
-    padding:20px;
-    border-radius:20px;
-    background:white;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
+.graph-container {
+  width: 95%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.graph-container h2{
-    text-align:center;
-    margin-bottom:20px;
-}.graph{
-    width:100%;
-    height:350px;
-    padding:20px;
+.graph-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.graph {
+  width: 100%;
+  height: 350px;
+  padding: 20px;
 }
 
-.recharts-cartesian-grid line{
-    stroke:#ececec;
+.recharts-cartesian-grid line {
+  stroke: #ececec;
 }
 
-.recharts-tooltip-wrapper{
-    outline:none;
+.recharts-tooltip-wrapper {
+  outline: none;
 }
 
-.recharts-default-tooltip{
-    border:none !important;
-    border-radius:10px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+.recharts-default-tooltip {
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.recharts-text{
-    font-size:14px;
+.recharts-text {
+  font-size: 14px;
 }
-.graph{
-    width:100%;
-    padding:20px;
-}
-
-.graph-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+.graph {
+  width: 100%;
+  padding: 20px;
 }
 
-.graph-header h2{
-    margin:0;
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.graph-header h3{
-    margin:0;
-    color:#555;
+.graph-header h2 {
+  margin: 0;
 }
 
-.recharts-cartesian-grid line{
-    stroke:#ececec;
+.graph-header h3 {
+  margin: 0;
+  color: #555;
 }
 
-.recharts-default-tooltip{
-    border:none !important;
-    border-radius:12px !important;
-    box-shadow:0 8px 20px rgba(0,0,0,.18);
+.recharts-cartesian-grid line {
+  stroke: #ececec;
 }
 
-.recharts-tooltip-wrapper{
-    outline:none;
+.recharts-default-tooltip {
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
-.recharts-text{
-    font-size:14px;
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+.recharts-text {
+  font-size: 14px;
 }

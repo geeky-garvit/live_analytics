@@ -1,15 +1,6 @@
-import "./homegraph.css";
+import "./Homegraph.css"
 
-import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts"
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts"
 
 function HomeGraph({ history }) {
   return (
@@ -26,33 +17,15 @@ function HomeGraph({ history }) {
 
           <Legend />
 
-          <Line
-            type="monotone"
-            dataKey="todo"
-            stroke="#F59E0B"
-            strokeWidth={3}
-            dot={false}
-          />
+          <Line type="monotone" dataKey="todo" stroke="#F59E0B" strokeWidth={3} dot={false} />
 
-          <Line
-            type="monotone"
-            dataKey="progress"
-            stroke="#3B82F6"
-            strokeWidth={3}
-            dot={false}
-          />
+          <Line type="monotone" dataKey="progress" stroke="#3B82F6" strokeWidth={3} dot={false} />
 
-          <Line
-            type="monotone"
-            dataKey="completed"
-            stroke="#22C55E"
-            strokeWidth={3}
-            dot={false}
-          />
+          <Line type="monotone" dataKey="completed" stroke="#22C55E" strokeWidth={3} dot={false} />
         </LineChart>
       </ResponsiveContainer>
     </div>
-  );
+  )
 }
 
-export default HomeGraph;
+export default HomeGraph
