@@ -17,8 +17,7 @@ function Progress() {
   const completed = tasks.filter((t) => t.status === "completed").length
 
   const percentage = total === 0 ? 0 : Math.round((completed / total) * 100)
-  const productivity =
-    total === 0 ? 0 : Math.round(((completed + progress * 0.5) / total) * 100)
+  const productivity = total === 0 ? 0 : Math.round(((completed + progress * 0.5) / total) * 100)
 
   const hours = String(Math.floor(elapsed / 3600000)).padStart(2, "0")
   const minutes = String(Math.floor((elapsed % 3600000) / 60000)).padStart(2, "0")
@@ -59,11 +58,6 @@ function Progress() {
             <div className="card completed">
               <h3>{completed}</h3>
               <p>Completed</p>
-            </div>
-
-            <div className="card productivity">
-              <h3>{productivity}%</h3>
-              <p>Productivity</p>
             </div>
           </div>
         </div>

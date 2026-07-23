@@ -12,7 +12,7 @@ body {
   position: fixed;
   top: -40px;
   font-size: 18vh;
-  left: 600px;
+  left:19vw;
   z-index: -5;
   background: linear-gradient(to right, #d4bbf3, #be50f1);
 

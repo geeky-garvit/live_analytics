@@ -13,6 +13,7 @@
   flex-direction: column;
   gap: 5vh;
   justify-self: center;
+  justify-items: center;
   
 }
 
