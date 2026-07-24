@@ -22,7 +22,7 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* Allows stacking on small viewports */
+  flex-wrap: wrap; 
 }
 
 .graph-header h2 {
@@ -52,7 +52,6 @@
   white-space: nowrap;
 }
 
-/* --- Recharts Overrides --- */
 .recharts-responsive-container {
   min-height: 280px;
 }
@@ -75,7 +74,7 @@
   font-size: 13px;
 }
 
-/* --- Mobile Breakpoints --- */
+
 @media (max-width: 600px) {
   .graph-header {
     flex-direction: column;

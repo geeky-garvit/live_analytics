@@ -63,7 +63,7 @@ function Home() {
             <p>Stay organized and finish your work efficiently.</p>
           </div>
 
-          {/* MOOD PICKER OPTIONS */}
+         
           <div className="mood-picker">
             <span className="mood-label">Set Mood:</span>
             <div className="mood-options">
@@ -120,21 +120,31 @@ function Home() {
           <Link to="/tasks">View All →</Link>
         </div>
 
-        {recentTasks.length === 0 ? (
-          <div className="empty-state">
-            <p>No tasks found. Create one to get started!</p>
-          </div>
-        ) : (
-          recentTasks.map((task) => (
-            <div key={task.id} className="recentTask">
-              <div>
-                <h3>{task.title}</h3>
-                <p>{task.priority || "Normal Priority"}</p>
-              </div>
-              <span>{task.status}</span>
-            </div>
-          ))
-        )}
+        {recentTasks.map((task) => {
+  
+  const statusStr = (task.status || "").toLowerCase().trim();
+
+  
+  let statusClass = "status-todo"; 
+  
+  if (statusStr.includes("progress")) {
+    statusClass = "status-progress"; 
+  } else if (statusStr.includes("complete") || statusStr.includes("done")) {
+    statusClass = "status-completed"; 
+  }
+
+  return (
+    <div key={task.id} className="recentTask">
+      <div>
+        <h3>{task.title}</h3>
+        <p>{task.priority || "Normal Priority"}</p>
+      </div>
+      <span className={`status-badge ${statusClass}`}>
+        {task.status}
+      </span>
+    </div>
+  )
+})}
       </section>
     </div>
   )

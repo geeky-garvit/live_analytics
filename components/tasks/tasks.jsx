@@ -98,8 +98,7 @@ function Tasks() {
     .filter((task) => task.status === "new")
     .filter((task) => {
       const searchMatch = task.title.toLowerCase().includes(search.toLowerCase())
-      const priorityMatch =
-        priorityFilter === "all" || task.priority?.toLowerCase() === priorityFilter.toLowerCase()
+      const priorityMatch = priorityFilter === "all" || task.priority?.toLowerCase() === priorityFilter.toLowerCase()
 
       return searchMatch && priorityMatch
     })
@@ -142,7 +141,7 @@ function Tasks() {
             opacity: state?.lastAction ? 1 : 0.5,
           }}
         >
-          ↩️ 
+          ↩️
         </button>
       </div>
 
@@ -151,12 +150,7 @@ function Tasks() {
           <h1>Todo</h1>
           <DropColumn status="todo" onDropTask={handleDropTask}>
             {todoTasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                onDragStart={setDragTask}
-                onDragEnd={() => setDragTask(null)}
-              />
+              <TaskCard key={task.id} task={task} onDragStart={setDragTask} onDragEnd={() => setDragTask(null)} />
             ))}
           </DropColumn>
         </div>
@@ -165,12 +159,7 @@ function Tasks() {
           <h1>In Progress</h1>
           <DropColumn status="in-progress" onDropTask={handleDropTask}>
             {progressTasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                onDragStart={setDragTask}
-                onDragEnd={() => setDragTask(null)}
-              />
+              <TaskCard key={task.id} task={task} onDragStart={setDragTask} onDragEnd={() => setDragTask(null)} />
             ))}
           </DropColumn>
         </div>
@@ -179,12 +168,7 @@ function Tasks() {
           <h1>Completed</h1>
           <DropColumn status="completed" onDropTask={handleDropTask}>
             {completedTasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                task={task}
-                onDragStart={setDragTask}
-                onDragEnd={() => setDragTask(null)}
-              />
+              <TaskCard key={task.id} task={task} onDragStart={setDragTask} onDragEnd={() => setDragTask(null)} />
             ))}
           </DropColumn>
         </div>
@@ -194,24 +178,16 @@ function Tasks() {
         <div className="inbox-header">
           <h1>Inbox</h1>
 
-          <div>
-            <input className="inbox-serch"
+          <div className="inbox-controls">
+            <input
+              className="inbox-search"
               type="text"
               placeholder="Search Inbox..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{
-                padding: "6px 12px",
-                borderRadius: "6px",
-                border: "1px solid #ccc",
-              }}
             />
 
-            <select
-              className="fltr"
-              value={priorityFilter}
-              onChange={(e) => setPriorityFilter(e.target.value)}
-            >
+            <select className="fltr" value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}>
               <option value="all">All</option>
               <option value="high">🔴 High</option>
               <option value="medium">🟡 Medium</option>
@@ -222,7 +198,7 @@ function Tasks() {
 
         <DropColumn status="new" onDropTask={handleDropTask}>
           {inboxTasks.length === 0 ? (
-            <p className="no-tasks" style={{ padding: "10px" }}>No inbox tasks match search.</p>
+            <p className="no-tasks">No inbox tasks match search.</p>
           ) : (
             inboxTasks.map((task) => (
               <TaskCard

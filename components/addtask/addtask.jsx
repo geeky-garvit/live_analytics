@@ -1,13 +1,12 @@
 import "./addtask.css"
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom" // 1. Import useNavigate
-
+import { useNavigate } from "react-router-dom"
 import { taskSchema } from "../../src/schema/taskSchema"
 import { TaskContext } from "../../src/context/taskcontext"
 
 function Addtask() {
   const { dispatch } = useContext(TaskContext)
-  const navigate = useNavigate() // 2. Initialize navigate hook
+  const navigate = useNavigate() 
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")

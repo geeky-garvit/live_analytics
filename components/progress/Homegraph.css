@@ -1,6 +1,5 @@
 .homeGraph {
   width: 100%;
-  /* Remove 5vh / min-height conflict. Use fluid min/max heights instead */
   min-height: 280px;
   max-height: 450px;
   display: flex;
@@ -8,7 +7,7 @@
   box-sizing: border-box;
 }
 
-/* Allow Recharts to control its own scaling smoothly */
+
 .recharts-responsive-container {
   width: 100% !important;
   height: 100% !important;

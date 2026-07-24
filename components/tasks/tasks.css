@@ -31,7 +31,7 @@
   flex-wrap: wrap;
 }
 
-/* Base Form Control Styles */
+
 .search-bar input,
 .filter-group select {
   padding: 8px 14px;
@@ -134,7 +134,8 @@
 
 .inbox-controls input[type="text"] {
   height: 40px;
- 
+  padding: 0 14px;
+  border-radius: 25px;
   box-shadow: 0 4px 12px gray;
   border: 1px solid #cbd5e1;
   background: #f8fafc;
@@ -150,13 +151,14 @@
   background: #ffffff;
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
- 
+  border-radius: 25px;
+   box-shadow: 0 4px 12px gray;
 }
 
 .inbox-controls select.fltr {
-  height: 20px;
+  height: 40px;
   padding: 0 12px;
- 
+  border-radius: 25px;
   border: 1px solid #cbd5e1;
   background: #f8fafc;
   color: #0f172a;
@@ -165,12 +167,14 @@
   cursor: pointer;
   outline: none;
   transition: all 0.2s ease;
+   box-shadow: 0 4px 12px gray;
 }
 
 .inbox-controls select.fltr:focus {
-  background: #ffffff;
+  
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+   box-shadow: 0 4px 12px gray;
 }
 
 /* Board Layout */
@@ -372,7 +376,7 @@
   }
 }
 
-/* Mobile View (≤ 600px) */
+
 @media (max-width: 600px) {
   .tasks {
     padding: 0 3vw 3vw;
