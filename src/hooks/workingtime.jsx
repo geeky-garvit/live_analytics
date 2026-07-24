@@ -1,25 +1,40 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 function useWorkingTimer(working, startTime, totalWorkingTime) {
-  const [elapsed, setElapsed] = useState(totalWorkingTime)
+  const [elapsed, setElapsed] = useState(totalWorkingTime);
+
+  // Reset timer when internet connection is restored
+  useEffect(() => {
+    const handleOnline = () => {
+      setElapsed(0);
+    };
+
+    window.addEventListener("online", handleOnline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+    };
+  }, []);
 
   useEffect(() => {
     if (!working || !startTime) {
-      setElapsed(totalWorkingTime)
-
-      return
+      setElapsed(totalWorkingTime);
+      return;
     }
 
-    const interval = setInterval(() => {
-      setElapsed(totalWorkingTime + (Date.now() - startTime))
-    }, 1000)
+    const updateTimer = () => {
+      setElapsed(Date.now() - startTime);
+    };
 
-    return () => {
-      clearInterval(interval)
-    }
-  }, [working, startTime, totalWorkingTime])
+    // Update immediately
+    updateTimer();
 
-  return elapsed
+    const interval = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(interval);
+  }, [working, startTime, totalWorkingTime]);
+
+  return elapsed;
 }
 
-export default useWorkingTimer
+export default useWorkingTimer;

@@ -1,8 +1,14 @@
+
+*{
+  font-family:'Times New Roman', Times, serif;
+}.app{
+  justify-content: center;
+  justify-items: center;
+}
 .first-name {
   position: fixed;
   top: -40px;
-  font-size: 18vh;
-  left: 25vw;
+  font-size: 13vw;
   z-index: -5;
   background: linear-gradient(to right, #d4bbf3, #be50f1);
 

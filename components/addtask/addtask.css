@@ -144,7 +144,6 @@
 
 .form-inputs {
   width: 100%;
-
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -160,10 +159,8 @@
 
 .input-items h3 {
   width: 110px;
-
   font-size: 0.95rem;
   font-weight: 600;
-
   color: #334155;
 }
 
@@ -173,7 +170,7 @@ textarea {
   flex: 1;
 
   border: 1px solid #cbd5e1;
-  border-radius: 12px;
+  border-radius: 25px;
 
   background: #f8fafc;
 
@@ -192,7 +189,7 @@ textarea {
 input,
 select {
   height: 48px;
-  padding: 0 16px;
+  padding: 2px 16px 2px;
 }
 
 textarea {
@@ -225,7 +222,7 @@ small {
   height: 52px;
 
   border: none;
-  border-radius: 14px;
+  border-radius: 25px;
 
   background: linear-gradient(135deg, #e68ef6 0%, #dcbaec 55%, #d9bcf6 100%);
 

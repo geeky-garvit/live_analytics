@@ -14,7 +14,7 @@ nav{
     justify-self:center;
     top:5vh;
     transition: 2s all ease-in-out;
-    z-index: 100000;
+    z-index: 100;
 }
 .work-toggle{
     display:flex;
@@ -91,7 +91,7 @@ nav{
     justify-content: space-between;
 }
 button:hover{
-    color: #e3a0f9;
+    
     text-shadow: #e3a0f9;
 }
 button{
@@ -139,4 +139,19 @@ button{
   .buttons {
     gap: 8px;
   }
+}
+
+button.button:focus {
+  outline: none;
+}
+
+button.button:not(:hover):not(:active) {
+  color: #d7b9e1; 
+  text-shadow: none;
+}
+
+a.button.active {
+  color: #e3a0f9;
+  text-shadow: 0 0 8px rgba(227, 160, 249, 0.6);
+  font-weight: bold;
 }

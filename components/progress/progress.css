@@ -1,5 +1,6 @@
 .progress {
   width: 90vw;
+  max-width: 1200px; /* Prevents stretching too wide on giant screens */
   margin: 120px auto 40px;
   display: flex;
   flex-direction: column;
@@ -13,56 +14,24 @@
   gap: 25px;
 }
 
+/* --- Progress Container & Radial Section --- */
 .progress-container {
   flex: 2;
-  min-height: 300px;
+  min-height: 280px;
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  padding: 20px;
+  padding: 24px;
+  gap: 20px;
 }
-
-
-.time {
-  flex: 1;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 20px;
-}
-
-.time h2 {
-  color: #777;
-  margin-bottom: 20px;
-}
-
-.time h1 {
-  font-size: 45px;
-  letter-spacing: 3px;
-  margin: 10px 0;
-}
-
-.time p {
-  font-size: 18px;
-  color: #666;
-}
-
-
 
 .circle {
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -70,11 +39,10 @@
 }
 
 .circle-inner {
-  width: 170px;
-  height: 170px;
+  width: 155px;
+  height: 155px;
   background: #fff;
   border-radius: 50%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,59 +51,49 @@
 
 .circle-inner h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 36px;
 }
 
 .circle-inner p {
-  margin-top: 10px;
+  margin-top: 4px;
   color: #777;
 }
 
-
-
+/* --- Stats Grid Fix --- */
 .stats {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  height:20vh;
-  width: 10vw;
-  
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  gap: 15px;
+  width: 100%; /* Overridden fixed 10vw */
 }
 
 .card {
   border-radius: 15px;
   color: #fff;
-  width: 10vw;
+  width: 100%; /* Flexes safely within grid column */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 16px 12px;
   min-height: 90px;
-  justify-self: center;
+  box-sizing: border-box;
 }
 
 .card h3 {
   margin: 0;
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .card p {
-  margin-top: 10px;
+  margin: 6px 0 0;
+  font-size: 14px;
 }
 
-.inbox {
-  background: #ddb8ed;
-}
-
-.todo {
-  background: #ddb8ed;
-}
-
-.progress-card {
-  background: #ddb8ed;
-}
-
+.inbox,
+.todo,
+.progress-card,
 .completed {
   background: #ddb8ed;
 }
@@ -144,9 +102,85 @@
   background: #8b5cf6;
 }
 
+/* --- Time Container --- */
+.time {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.time h2 {
+  color: #777;
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.time h1 {
+  font-size: clamp(28px, 4vw, 45px); /* Fluid size based on viewport */
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+
+.time p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+/* --- Graph Wrapper --- */
 .graph-container {
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Responsive Mobile & Tablet Breakpoint --- */
+@media (max-width: 868px) {
+  .progress {
+    width: 92vw;
+    margin: 80px auto 20px;
+  }
+
+  .rows {
+    flex-direction: column;
+  }
+
+  .progress-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .circle-inner {
+    width: 120px;
+    height: 120px;
+  }
+
+  .circle-inner h1 {
+    font-size: 28px;
+  }
 }

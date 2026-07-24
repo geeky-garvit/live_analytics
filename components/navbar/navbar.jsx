@@ -40,7 +40,15 @@ function Navbar() {
 
       <div className="menue">
         <div className="buttons">
-          <button className="button" title="Add Task" onClick={() => dispatch({ type: "OPEN_ADD_MODAL" })}>
+          <button
+            type="button"
+            className="button"
+            title="Add Task"
+            onClick={(e) => {
+              e.currentTarget.blur()
+              dispatch({ type: "OPEN_ADD_MODAL" })
+            }}
+          >
             {isMobile ? "➕" : "Add"}
           </button>
 
@@ -54,7 +62,6 @@ function Navbar() {
         </div>
 
         <div className="work-toggle">
-          
           <label className="switch">
             <input
               type="checkbox"

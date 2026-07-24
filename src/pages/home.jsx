@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { TaskContext } from "../context/taskcontext"
@@ -18,7 +18,11 @@ const MOOD_OPTIONS = [
 
 function Home() {
   const { state } = useContext(TaskContext)
-  const { tasks, working, startTime, totalWorkingTime, loading } = state
+  const tasks = state?.tasks || []
+  const working = state?.working || false
+  const startTime = state?.startTime || null
+  const totalWorkingTime = state?.totalWorkingTime || 0
+  const loading = state?.loading || false
 
   // Load saved mood from localStorage or default to "😊"
   const [selectedMood, setSelectedMood] = useState(() => {
@@ -31,7 +35,7 @@ function Home() {
     localStorage.setItem("user_mood", emoji)
   }
 
-  const elapsed = useWorkingTimer(working, startTime, totalWorkingTime)
+  const elapsed = useWorkingTimer(working, startTime, totalWorkingTime) || 0
 
   if (loading) {
     return <PageSkeleton />
@@ -83,7 +87,7 @@ function Home() {
           <h2>Productivity Overview</h2>
           <p>Live Task Activity</p>
         </div>
-        <HomeGraph history={state.history || []} />
+        <HomeGraph history={state?.history || []} />
       </section>
 
       <section className="middle">
@@ -125,7 +129,7 @@ function Home() {
             <div key={task.id} className="recentTask">
               <div>
                 <h3>{task.title}</h3>
-                <p>{task.priority}</p>
+                <p>{task.priority || "Normal Priority"}</p>
               </div>
               <span>{task.status}</span>
             </div>

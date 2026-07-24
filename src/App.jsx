@@ -22,8 +22,9 @@ function App() {
     
     const stats = useTaskStats(tasks)
   return (
-    <>
-      <h1 className="first-name">Geeky Dash</h1>
+    <div className="app">
+    
+      <h1 className="first-name">G e e k y-D a s h</h1>
       <StatsFloatingModal stats={stats} />
       <Navbar />
 
@@ -34,7 +35,7 @@ function App() {
       </Routes>
 
       {state.showAddModal && <AddTask />}
-    </>
+    </div>
   )
 }
 

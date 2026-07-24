@@ -1,348 +1,48 @@
 body {
-  background-color: rgb(241, 237, 240);
+  background-color: #f1edf0;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
+
 .home {
   width: 90vw;
-  margin: 110px auto 40px;
+  max-width: 1200px;
+  margin: 100px auto 40px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  justify-content: center;
 }
-.home .first-name {
-  position: fixed;
-  top: -40px;
-  font-size: 18vh;
-  left:19vw;
-  z-index: -5;
-  background: linear-gradient(to right, #d4bbf3, #be50f1);
 
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-}
+/* Hero Section */
 .hero {
   width: 100%;
-  min-height: 18vh;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 2rem 3rem;
-
-  background: #fff;
+  background: #ffffff;
   border-radius: 20px;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 1.8rem 2.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
 }
 
-.hero h1 {
-  font-size: 2.2rem;
-}
-
-.hero p {
-  margin-top: 0.5rem;
-  color: #666;
-}
-
-.newTask {
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 12px;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-}
-
-.graphSection {
-  width: 100%;
-  height: 55vh;
-
-  background: white;
-
-  border-radius: 20px;
-
-  padding: 2rem;
-
-  display: flex;
-  flex-direction: column;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.graphHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 20px;
-}
-
-.graphHeader h2 {
-  font-size: 1.8rem;
-}
-
-.graphHeader p {
-  color: #666;
-}
-
-.homeGraph {
-  flex: 1;
-
-  width: 100%;
-
-  min-height: 0;
-}
-
-.middle {
-  display: flex;
-
-  gap: 2rem;
-
-  width: 100%;
-}
-
-.circleCard,
-.timerCard {
-  flex: 1;
-
-  background: white;
-
-  border-radius: 20px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  flex-direction: column;
-
-  padding: 2rem;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.recent {
-  width: 100%;
-
-  background: white;
-
-  border-radius: 20px;
-
-  padding: 2rem;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.actions {
-  display: flex;
-
-  justify-content: center;
-
-  gap: 20px;
-}
-
-.actions button {
-  padding: 1rem 2rem;
-
-  border: none;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-}
-
-.middle {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-.circleCard,
-.timerCard {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.circle {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circleInner {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.circleInner h1 {
-  font-size: 48px;
-}
-
-.circleInner p {
-  color: #777;
-}
-
-.timerCard h2 {
-  color: #777;
-}
-
-.timerCard h1 {
-  font-size: 50px;
-  margin: 20px 0;
-}
-
-.timerCard p {
-  font-size: 20px;
-}
-
-.recent {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  padding: 30px;
-}
-
-.recentHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-
-.recentHeader h2 {
-  color: #222;
-}
-
-.recentHeader a {
-  text-decoration: none;
-  color: #2563eb;
-  font-weight: bold;
-}
-
-.recentTask {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.recentTask:last-child {
-  border: none;
-}
-
-.recentTask h3 {
-  margin-bottom: 5px;
-}
-
-.recentTask p {
-  color: #888;
-}
-
-.recentTask span {
-  background: #eef2ff;
-  color: #2563eb;
-  padding: 8px 18px;
-  border-radius: 30px;
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-/* ACTION BUTTONS */
-
-.actions {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.actions button {
-  width: 240px;
-  padding: 18px;
-  border: none;
-  border-radius: 12px;
-  background: #111827;
-  color: white;
-  cursor: pointer;
-  font-size: 17px;
-  transition: 0.3s;
-}
-
-.actions button:hover {
-  background: #2563eb;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 1000px) {
-  .dashboardCards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .middle {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .actions {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (max-width: 700px) {
-  .dashboardCards {
-    grid-template-columns: 1fr;
-  }
-
-  .circle {
-    width: 200px;
-    height: 200px;
-  }
-
-  .circleInner {
-    width: 150px;
-    height: 150px;
-  }
-
-  .timerCard h1 {
-    font-size: 35px;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-}
 .welcome-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
+  width: 100%;
+}
+
+.welcome-title h1 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin: 0;
+  color: #111827;
+}
+
+.welcome-title p {
+  margin: 0.4rem 0 0;
+  color: #6b7280;
+  font-size: 1rem;
 }
 
 .active-mood {
@@ -351,47 +51,232 @@ body {
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Mood Picker */
 .mood-picker {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(0, 0, 0, 0.04);
-  padding: 6px 12px;
-  border-radius: 20px;
-  justify-self: end;
+  background: #f3f4f6;
+  padding: 8px 14px;
+  border-radius: 30px;
 }
 
 .mood-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #666;
+  color: #4b5563;
 }
 
 .mood-options {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .mood-btn {
   background: transparent;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   cursor: pointer;
-  padding: 4px 6px;
+  padding: 4px;
   border-radius: 50%;
-  transition:
-    transform 0.15s ease,
-    background 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .mood-btn:hover {
-  transform: scale(1.25);
+  transform: scale(1.2);
 }
 
 .mood-btn.active {
   background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transform: scale(1.15);
+}
+
+/* Graph Section */
+.graphSection {
+  width: 100%;
+  min-height: 380px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+.graphHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.graphHeader h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #111827;
+}
+
+.graphHeader p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.homeGraph {
+  flex: 1;
+  width: 100%;
+  min-height: 260px;
+}
+
+/* Middle Stats Grid */
+.middle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.circleCard,
+.timerCard {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.circle {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circleInner {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.circleInner h1 {
+  font-size: 40px;
+  margin: 0;
+  color: #111827;
+}
+
+.circleInner p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.timerCard h2 {
+  color: #6b7280;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.timerCard h1 {
+  font-size: clamp(36px, 5vw, 48px);
+  margin: 15px 0;
+  letter-spacing: 2px;
+  color: #111827;
+}
+
+.timerCard p {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Recent Tasks Section */
+.recent {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  padding: 1.8rem;
+  box-sizing: border-box;
+}
+
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recentHeader h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.4rem;
+}
+
+.recentHeader a {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.15s ease;
+}
+
+.recentHeader a:hover {
+  color: #1d4ed8;
+}
+
+.recentTask {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.recentTask:last-child {
+  border-bottom: none;
+}
+
+.recentTask h3 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  color: #1f2937;
+}
+
+.recentTask p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.recentTask span {
+  background: #eef2ff;
+  color: #2563eb;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.empty-state {
+  padding: 20px 0;
+  text-align: center;
+  color: #9ca3af;
 }
 
 @keyframes popIn {
@@ -400,5 +285,55 @@ body {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+/* --- Responsive Media Queries --- */
+
+@media (max-width: 868px) {
+  .home {
+    width: 92vw;
+    margin: 80px auto 30px;
+    gap: 1.5rem;
+  }
+
+  .middle {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .welcome-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mood-picker {
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero,
+  .graphSection,
+  .circleCard,
+  .timerCard,
+  .recent {
+    padding: 1.25rem;
+  }
+
+  .circle {
+    width: 170px;
+    height: 170px;
+  }
+
+  .circleInner {
+    width: 130px;
+    height: 130px;
+  }
+
+  .circleInner h1 {
+    font-size: 30px;
   }
 }

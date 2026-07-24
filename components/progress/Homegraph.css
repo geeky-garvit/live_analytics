@@ -1,24 +1,41 @@
-.homeGraph{
-    width:100%;
-    height:5vh;
-    min-height:400px;
+.homeGraph {
+  width: 100%;
+  /* Remove 5vh / min-height conflict. Use fluid min/max heights instead */
+  min-height: 280px;
+  max-height: 450px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
-.recharts-responsive-container{
-    width:100% !important;
-    height:300px !important;
+/* Allow Recharts to control its own scaling smoothly */
+.recharts-responsive-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 250px;
 }
 
-.recharts-wrapper{
-    font-size:14px;
+.recharts-wrapper {
+  font-size: 13px;
 }
 
-.recharts-cartesian-axis-tick-value{
-    fill:#6b7280;
+.recharts-cartesian-axis-tick-value {
+  fill: #6b7280;
 }
 
-.recharts-default-tooltip{
-    border-radius:10px !important;
-    border:none !important;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+.recharts-default-tooltip {
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile responsive scaling */
+@media (max-width: 600px) {
+  .homeGraph {
+    min-height: 240px;
+  }
+
+  .recharts-wrapper {
+    font-size: 11px;
+  }
 }
