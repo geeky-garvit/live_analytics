@@ -10,6 +10,18 @@ export const initialState = {
   error: null,
 }
 
+function createHistory(state, tasks) {
+  const elapsed =
+    state.totalWorkingTime + (state.working && state.startTime ? Date.now() - state.startTime : 0)
+
+  return {
+    minute: Math.floor(elapsed / 60000),
+    todo: (tasks || []).filter((t) => t.status === "todo" || t.status === "new").length,
+    progress: (tasks || []).filter((t) => t.status === "in-progress").length,
+    completed: (tasks || []).filter((t) => t.status === "completed").length,
+  }
+}
+
 export function Reducer(state, action) {
   switch (action.type) {
     case "SET_LOADING":
@@ -30,41 +42,6 @@ export function Reducer(state, action) {
       }
     }
 
-    case "CHANGE_STATUS": {
-      const updatedTasks = state.tasks.map((task) =>
-        task.id === action.payload.id
-          ? {
-              ...task,
-              status: action.payload.status,
-            }
-          : task,
-      )
-
-      return {
-        ...state,
-
-        lastAction: {
-          type: "CHANGE_STATUS",
-          previousTasks: state.tasks,
-        },
-        tasks: updatedTasks,
-        history: [...state.history, createHistory(state, updatedTasks)],
-      }
-    }
-
-    case "UNDO": {
-      if (!state.lastAction) return state
-
-      const restoredTasks = state.lastAction.previousTasks
-
-      return {
-        ...state,
-        tasks: restoredTasks,
-        lastAction: null,
-        history: [...state.history, createHistory(state, restoredTasks)],
-      }
-    }
-
     case "STOP_WORK": {
       if (!state.working || !state.startTime) return state
       const updatedState = {
@@ -76,6 +53,34 @@ export function Reducer(state, action) {
       return {
         ...updatedState,
         history: [...state.history, createHistory(updatedState, updatedState.tasks)],
+      }
+    }
+
+    case "CHANGE_STATUS": {
+      const updatedTasks = state.tasks.map((task) =>
+        task.id === action.payload.id ? { ...task, status: action.payload.status } : task,
+      )
+
+      return {
+        ...state,
+        lastAction: {
+          type: "CHANGE_STATUS",
+          previousTasks: state.tasks,
+        },
+        tasks: updatedTasks,
+        history: [...state.history, createHistory(state, updatedTasks)],
+      }
+    }
+
+    case "UNDO": {
+      if (!state.lastAction) return state
+      const restoredTasks = state.lastAction.previousTasks
+
+      return {
+        ...state,
+        tasks: restoredTasks,
+        lastAction: null,
+        history: [...state.history, createHistory(state, restoredTasks)],
       }
     }
 
@@ -109,18 +114,6 @@ export function Reducer(state, action) {
       }
     }
 
-    case "CHANGE_STATUS": {
-      const updatedTasks = state.tasks.map((task) =>
-        task.id === action.payload.id ? { ...task, status: action.payload.status } : task,
-      )
-
-      return {
-        ...state,
-        tasks: updatedTasks,
-        history: [...state.history, createHistory(state, updatedTasks)],
-      }
-    }
-
     case "SAVE_GRAPH_POINT": {
       if (!state.working) return state
       return {
@@ -137,16 +130,5 @@ export function Reducer(state, action) {
 
     default:
       return state
-  }
-}
-
-function createHistory(state, tasks) {
-  const elapsed = state.totalWorkingTime + (state.working && state.startTime ? Date.now() - state.startTime : 0)
-
-  return {
-    minute: Math.floor(elapsed / 60000),
-    todo: (tasks || []).filter((t) => t.status === "todo").length,
-    progress: (tasks || []).filter((t) => t.status === "in-progress").length,
-    completed: (tasks || []).filter((t) => t.status === "completed").length,
   }
 }
